@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gitarowy Losowacz Nut 🎸</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-guitar"></i> Gitarowy Losowacz Nut</h1>
+            <p class="subtitle">Losuj ćwiczenia na gitarę - nutę i strunę</p>
+        </header>
+
+        <main>
+            <div class="result-card">
+                <div class="result-section">
+                    <h2><i class="fas fa-music"></i> Nuta</h2>
+                    <div id="nuta" class="big-text">--</div>
+                </div>
+                
+                <div class="result-section">
+                    <h2><i class="fas fa-guitar"></i> Struna</h2>
+                    <div id="struna" class="big-text">--</div>
+                    <div id="struna-nazwa" class="small-text">(nazwa struny)</div>
+                </div>
+                
+                <div class="result-section">
+                    <h2><i class="fas fa-sliders-h"></i> Próg</h2>
+                    <div id="prog" class="big-text">--</div>
+                    <div class="small-text">(opcjonalnie)</div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fas fa-info-circle"></i> Wskazówka:</h3>
+                <p id="wskazowka">Naciśnij przycisk poniżej aby wylosować</p>
+            </div>
+
+            <div class="controls">
+                <button id="losujBtn" class="btn-primary">
+                    <i class="fas fa-random"></i> Losuj Nutę i Strunę
+                </button>
+                
+                <button id="autoBtn" class="btn-secondary">
+                    <i class="fas fa-play"></i> Tryb Auto (3s)
+                </button>
+                
+                <button id="stopBtn" class="btn-danger" disabled>
+                    <i class="fas fa-stop"></i> Stop
+                </button>
+            </div>
+
+            <div class="settings">
+                <h3><i class="fas fa-cog"></i> Ustawienia</h3>
+                <div class="settings-group">
+                    <label>
+                        <input type="checkbox" id="pokazProg" checked>
+                        Pokaż próg
+                    </label>
+                    <label>
+                        <input type="checkbox" id="pokazNazwe" checked>
+                        Pokaż nazwę struny
+                    </label>
+                    <label>
+                        <input type="checkbox" id="dzwiek" checked>
+                        Dźwięk przy losowaniu
+                    </label>
+                </div>
+            </div>
+
+            <div class="history">
+                <h3><i class="fas fa-history"></i> Historia losowań</h3>
+                <div id="historiaLista" class="history-list">
+                    <!-- Tu będą pojawiać się wcześniejsze losowania -->
+                </div>
+                <button id="wyczyscBtn" class="btn-small">
+                    <i class="fas fa-trash"></i> Wyczyść historię
+                </button>
+            </div>
+
+            <div class="guitar-reference">
+                <h3><i class="fas fa-info-circle"></i> Numeracja strun:</h3>
+                <div class="strings-grid">
+                    <div class="string-item">1 - e (najcieńsza)</div>
+                    <div class="string-item">2 - B</div>
+                    <div class="string-item">3 - G</div>
+                    <div class="string-item">4 - D</div>
+                    <div class="string-item">5 - A</div>
+                    <div class="string-item">6 - E (najgrubsza)</div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>🎸 Ćwicz regularnie! • Używaj metronomu! • Nie spiesz się! 🎶</p>
+        </footer>
+    </div>
+
+    <audio id="soundClick" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
