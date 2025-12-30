@@ -10,9 +10,41 @@
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-guitar"></i> Gitarowy Losowacz Nut</h1>
-            <p class="subtitle">Losuj ćwiczenia na gitarę - nutę i strunę</p>
+            <div class="app-version">
+                v2.0 <span class="new-badge">NOWOŚĆ!</span>
+            </div>
+            <h1><i class="fas fa-guitar"></i> Ultimate Guitar Practice Tool</h1>
+            <p class="subtitle">Kompletne narzędzie do ćwiczeń gitarowych</p>
         </header>
+
+        <!-- Wybór trybu -->
+        <div class="mode-selector">
+            <h3><i class="fas fa-sliders-h"></i> Wybierz tryb ćwiczeń</h3>
+            <p>Przełączaj między różnymi rodzajami ćwiczeń</p>
+            
+            <div class="mode-buttons">
+                <a href="index.html" class="mode-btn active">
+                    <i class="fas fa-random"></i> Tryb Podstawowy
+                    <span class="badge">Losowy</span>
+                </a>
+                
+                <a href="loteria-nut.html" class="mode-btn">
+                    <i class="fas fa-trophy"></i> Loteria Nut
+                    <span class="badge">Bez powtórzeń</span>
+                </a>
+            </div>
+            
+            <div class="feature-description">
+                <h4><i class="fas fa-info-circle"></i> Opis trybów:</h4>
+                <ul>
+                    <li><strong>Tryb Podstawowy</strong> - losuj nutę, strunę i próg za każdym razem od nowa</li>
+                    <li><strong>Loteria Nut</strong> - system losuje wszystkie 12 nut bez powtórzeń, aż do wyczerpania</li>
+                </ul>
+                <p style="color: #ffd369; margin-top: 10px;">
+                    <i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Loteria Nut jest idealna do systematycznego ćwiczenia wszystkich dźwięków!
+                </p>
+            </div>
+        </div>
 
         <main>
             <div class="result-card">
@@ -92,10 +124,29 @@
                     <div class="string-item">6 - E (najgrubsza)</div>
                 </div>
             </div>
+            
+            <!-- Szybkie przełączanie -->
+            <div class="quick-nav">
+                <h3><i class="fas fa-exchange-alt"></i> Szybkie przełączanie</h3>
+                <p>Przejdź do innych trybów ćwiczeń:</p>
+                <div class="nav-buttons">
+                    <a href="loteria-nut.html" class="nav-btn">
+                        <i class="fas fa-dice"></i>
+                        <span>Loteria Nut</span>
+                        <small>12 nut bez powtórzeń</small>
+                    </a>
+                </div>
+            </div>
         </main>
 
         <footer>
-            <p>🎸 Ćwicz regularnie! • Używaj metronomu! • Nie spiesz się! 🎶</p>
+            <p>
+                <span style="color: #00adb5;">🎸 Ultimate Guitar Practice Tool v2.0</span> • 
+                <a href="loteria-nut.html" style="color: #ffd369; text-decoration: none;">
+                    <i class="fas fa-external-link-alt"></i> Przejdź do Loterii Nut
+                </a> • 
+                <span style="color: #eeeeee;">Ćwicz regularnie! 🎶</span>
+            </p>
         </footer>
     </div>
 
