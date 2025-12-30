@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loteria Nut bez Powtórzeń 🎵</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="loteria-page">
+    <div class="container">
+        <header>
+            <div class="app-version">
+                Loteria Nut <span class="new-badge">BEZ POWTÓRZEŃ</span>
+            </div>
+            <h1><i class="fas fa-trophy"></i> Loteria Nut bez Powtórzeń</h1>
+            <p class="subtitle">Losuj wszystkie 12 nut bez powtarzania - idealne do ćwiczeń!</p>
+            
+            <div class="back-to-main">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Powrót do trybu podstawowego
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <!-- Panel główny -->
+            <div class="main-panel">
+                <div class="current-result">
+                    <h2><i class="fas fa-star"></i> Aktualna Nuta</h2>
+                    <div id="currentNote" class="note-display">
+                        <div class="note-number">#</div>
+                        <div class="note-name">Kliknij "Losuj"</div>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <h3><i class="fas fa-chart-line"></i> Postęp</h3>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="progressCounter">0/12</span> wylosowanych nut
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="drawBtn" class="btn-draw">
+                        <i class="fas fa-random"></i> LOSUJ NASTĘPNĄ NUTĘ
+                    </button>
+                    
+                    <button id="resetBtn" class="btn-reset">
+                        <i class="fas fa-redo"></i> RESETUJ LOSOWANIE
+                    </button>
+                    
+                    <button id="autoBtn" class="btn-auto">
+                        <i class="fas fa-play"></i> AUTO LOSUJ (3s)
+                    </button>
+                    
+                    <button id="stopBtn" class="btn-stop" disabled>
+                        <i class="fas fa-stop"></i> STOP
+                    </button>
+                </div>
+
+                <div class="status-message">
+                    <div id="statusText" class="status-text">
+                        Gotowy do rozpoczęcia losowania!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historia losowań -->
+            <div class="history-section">
+                <h3><i class="fas fa-history"></i> Historia Losowań</h3>
+                <div class="history-container">
+                    <div id="historyNotes" class="history-notes">
+                        <div class="empty-history">Brak wylosowanych nut</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pozostałe nuty -->
+            <div class="remaining-section">
+                <h3><i class="fas fa-list"></i> Pozostałe do wylosowania</h3>
+                <div id="remainingNotes" class="notes-grid">
+                    <!-- Tu pojawią się dostępne nuty -->
+                </div>
+            </div>
+
+            <!-- Zakończone nuty -->
+            <div class="completed-section">
+                <h3><i class="fas fa-check-circle"></i> Wylosowane Nuty</h3>
+                <div id="completedNotes" class="notes-grid">
+                    <!-- Tu pojawią się wylosowane nuty -->
+                </div>
+            </div>
+
+            <!-- Instrukcja -->
+            <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> Jak to działa?</h3>
+                <div class="instruction-content">
+                    <div class="instruction-item">
+                        <div class="icon"><i class="fas fa-1"></i></div>
+                        <p>System losuje nuty od 1 do 12 bez powtórzeń</p>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="icon"><i class="fas fa-2"></i></div>
+                        <p>Każda nuta może pojawić się tylko raz</p>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="icon"><i class="fas fa-3"></i></div>
+                        <p>Po wylosowaniu wszystkich 12 nut - gra się kończy</p>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="icon"><i class="fas fa-4"></i></div>
+                        <p>Możesz resetować i zaczynać od nowa</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Szybkie przełączanie -->
+            <div class="quick-nav">
+                <h3><i class="fas fa-exchange-alt"></i> Szybkie przełączanie</h3>
+                <p>Przejdź do innych trybów ćwiczeń:</p>
+                <div class="nav-buttons">
+                    <a href="index.html" class="nav-btn">
+                        <i class="fas fa-guitar"></i>
+                        <span>Tryb Podstawowy</span>
+                        <small>Losowanie z powtórzeniami</small>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <a href="index.html" style="color: #4cc9f0; text-decoration: none;">
+                        <i class="fas fa-arrow-left"></i> Tryb Podstawowy
+                    </a>
+                </div>
+                <div class="footer-center">
+                    <p id="timer">Czas: 00:00</p>
+                </div>
+                <div class="footer-right">
+                    <button id="soundToggle" class="btn-sound">
+                        <i class="fas fa-volume-up"></i> Dźwięk
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Dźwięki -->
+    <audio id="soundDraw" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="soundComplete" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="soundReset" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-plastic-bubble-click-1124.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script-loteria.js"></script>
+</body>
+</html>
