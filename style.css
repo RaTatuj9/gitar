@@ -1,11 +1,12 @@
+/* ===== WSPÓLNE STYLE ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: #fff;
     min-height: 100vh;
@@ -13,16 +14,18 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
+/* Nagłówek */
 header {
     text-align: center;
     margin-bottom: 30px;
     padding-bottom: 20px;
     border-bottom: 2px solid #00adb5;
+    position: relative;
 }
 
 h1 {
@@ -37,6 +40,132 @@ h1 {
     opacity: 0.8;
 }
 
+.app-version {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(255, 211, 105, 0.2);
+    color: #ffd369;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.new-badge {
+    background: #ff4757;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 5px;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.back-to-main {
+    margin-top: 20px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 173, 181, 0.2);
+    color: #00adb5;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(0, 173, 181, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ===== STYLE DLA STRONY GŁÓWNEJ (index.html) ===== */
+
+/* Wybór trybu */
+.mode-selector {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.mode-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.mode-btn {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #3a0ca3, #4361ee);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.mode-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+}
+
+.mode-btn.active {
+    background: linear-gradient(135deg, #f72585, #b5179e);
+}
+
+.mode-btn .badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.feature-description {
+    background: rgba(0, 173, 181, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    text-align: left;
+    border-left: 4px solid #00adb5;
+}
+
+.feature-description h4 {
+    color: #00adb5;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-description ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.feature-description li {
+    margin-bottom: 8px;
+}
+
+/* Karta wyników */
 .result-card {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
@@ -91,6 +220,7 @@ h1 {
     margin-bottom: 10px;
 }
 
+/* Przyciski */
 .controls {
     display: flex;
     gap: 15px;
@@ -120,10 +250,15 @@ button {
     min-width: 250px;
 }
 
-.btn-primary:hover {
+.btn-primary:hover:not(:disabled) {
     background: linear-gradient(135deg, #0097a7 0%, #00838f 100%);
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 173, 181, 0.4);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .btn-secondary {
@@ -133,9 +268,14 @@ button {
     min-width: 200px;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover:not(:disabled) {
     background: rgba(255, 211, 105, 1);
     transform: translateY(-3px);
+}
+
+.btn-secondary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .btn-danger {
@@ -143,9 +283,14 @@ button {
     color: white;
 }
 
-.btn-danger:hover {
+.btn-danger:hover:not(:disabled) {
     background: rgba(231, 76, 60, 1);
     transform: translateY(-3px);
+}
+
+.btn-danger:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .btn-small {
@@ -156,14 +301,15 @@ button {
     margin-top: 10px;
 }
 
-.settings, .history, .guitar-reference {
+/* Ustawienia, historia, reference */
+.settings, .history, .guitar-reference, .quick-nav {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 25px;
 }
 
-.settings h3, .history h3, .guitar-reference h3 {
+h3 {
     color: #00adb5;
     margin-bottom: 15px;
     display: flex;
@@ -230,14 +376,379 @@ button {
     font-weight: bold;
 }
 
-footer {
+/* Szybka nawigacja */
+.quick-nav {
     text-align: center;
+}
+
+.nav-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 173, 181, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-btn:hover {
+    background: rgba(0, 173, 181, 0.2);
+    transform: translateY(-3px);
+    border-color: #00adb5;
+}
+
+.nav-btn i {
+    font-size: 2rem;
+    color: #00adb5;
+}
+
+.nav-btn span {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.nav-btn small {
+    color: #b8b8ff;
+    font-size: 0.9rem;
+}
+
+/* Stopka */
+footer {
     margin-top: 40px;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: #eeeeee;
     opacity: 0.7;
     font-size: 0.9rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* ===== STYLE DLA LOTERII NUT (loteria-nut.html) ===== */
+body.loteria-page {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+body.loteria-page h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: #4cc9f0;
+    text-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+}
+
+body.loteria-page .subtitle {
+    color: #b8b8ff;
+}
+
+/* Panel główny loterii */
+.main-panel {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(76, 201, 240, 0.2);
+}
+
+.current-result {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.note-display {
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    border-radius: 15px;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 400px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.note-display:hover {
+    transform: scale(1.02);
+}
+
+.note-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    font-weight: bold;
+    color: #ffd166;
+    text-shadow: 0 0 20px rgba(255, 209, 102, 0.5);
+    margin-bottom: 10px;
+}
+
+.note-name {
+    font-size: 2rem;
+    color: #fff;
+    opacity: 0.9;
+}
+
+/* Pasek postępu */
+.progress-section {
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4cc9f0, #4361ee);
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 10px;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    color: #b8b8ff;
+    font-size: 1.1rem;
+}
+
+/* Przyciski loterii */
+.controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.btn-draw {
+    background: linear-gradient(135deg, #f72585, #b5179e);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+.btn-draw:hover:not(:disabled) {
+    background: linear-gradient(135deg, #b5179e, #7209b7);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(247, 37, 133, 0.4);
+}
+
+.btn-reset {
+    background: linear-gradient(135deg, #ffd166, #ff9e00);
+    color: #1a1a2e;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+.btn-reset:hover {
+    background: linear-gradient(135deg, #ff9e00, #ff8500);
+    transform: translateY(-3px);
+}
+
+.btn-auto {
+    background: linear-gradient(135deg, #4cc9f0, #4361ee);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+.btn-auto:hover:not(:disabled) {
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    transform: translateY(-3px);
+}
+
+.btn-stop {
+    background: linear-gradient(135deg, #ef476f, #d90429);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+.btn-stop:hover:not(:disabled) {
+    background: linear-gradient(135deg, #d90429, #9d0208);
+    transform: translateY(-3px);
+}
+
+.btn-sound {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid #4cc9f0;
+}
+
+.btn-sound:hover {
+    background: rgba(76, 201, 240, 0.2);
+}
+
+/* Status */
+.status-message {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.status-text {
+    font-size: 1.3rem;
+    color: #ffd166;
+    min-height: 30px;
+}
+
+/* Sekcje loterii */
+.history-section,
+.remaining-section,
+.completed-section,
+.instructions {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.loteria-page h3 {
+    color: #4cc9f0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.history-container {
+    max-height: 150px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.history-notes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.history-item-loteria {
+    background: linear-gradient(135deg, #7209b7, #560bad);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.empty-history {
+    color: #b8b8ff;
+    font-style: italic;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Grid nut */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 12px;
+}
+
+.note-item {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.note-item.available {
+    background: linear-gradient(135deg, #4cc9f0, #4361ee);
+    color: white;
+}
+
+.note-item.drawn {
+    background: linear-gradient(135deg, #f72585, #b5179e);
+    color: white;
+    transform: scale(0.95);
+}
+
+.note-item.completed {
+    background: linear-gradient(135deg, #06d6a0, #0a9396);
+    color: white;
+    animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.note-number-small {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.note-name-small {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+/* Instrukcje */
+.instruction-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.instruction-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.instruction-item .icon {
+    background: linear-gradient(135deg, #4cc9f0, #4361ee);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 /* Animacje */
@@ -253,6 +764,17 @@ footer {
 
 /* Responsywność */
 @media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .app-version {
+        position: relative;
+        margin-bottom: 15px;
+        text-align: center;
+        display: inline-block;
+    }
+    
     .result-card {
         flex-direction: column;
         gap: 30px;
@@ -268,5 +790,45 @@ footer {
     
     .big-text {
         font-size: 3rem;
+    }
+    
+    .note-display {
+        padding: 20px;
+    }
+    
+    .note-number {
+        font-size: 3.5rem;
+    }
+    
+    .instruction-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .mode-buttons {
+        flex-direction: column;
+    }
+    
+    .mode-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .notes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .nav-buttons {
+        grid-template-columns: 1fr;
     }
 }
