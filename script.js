@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Sprawdź czy jesteśmy na stronie głównej
+    if (!document.querySelector('.result-card')) return;
+    
     // Elementy DOM
     const nutaElement = document.getElementById('nuta');
     const strunaElement = document.getElementById('struna');
@@ -38,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicjalizacja
     aktualizujHistorie();
+    aktualizujWidocznoscProgu();
+    aktualizujWidocznoscNazwy();
     
     // Funkcja losująca
     function losuj() {
@@ -85,8 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
             prog: prog
         };
         
-        historia.unshift(wpis); // Dodaj na początek
-        if (historia.length > 10) historia.pop(); // Ogranicz do 10 wpisów
+        historia.unshift(wpis);
+        if (historia.length > 10) historia.pop();
         
         localStorage.setItem('gitaraHistoria', JSON.stringify(historia));
         aktualizujHistorie();
@@ -180,10 +185,6 @@ document.addEventListener('DOMContentLoaded', function() {
     pokazProgCheckbox.addEventListener('change', aktualizujWidocznoscProgu);
     pokazNazweCheckbox.addEventListener('change', aktualizujWidocznoscNazwy);
     
-    // Inicjalizacja widoczności
-    aktualizujWidocznoscProgu();
-    aktualizujWidocznoscNazwy();
-    
     // Pierwsze losowanie
     losuj();
     
@@ -195,6 +196,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Informacja o skrócie klawiszowym
-    console.log('Tip: Naciśnij SPACJĘ aby losować!');
+    // Zapisz aktualny tryb
+    localStorage.setItem('lastMode', 'podstawowy');
 });
